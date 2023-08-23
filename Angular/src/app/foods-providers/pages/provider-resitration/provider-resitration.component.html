@@ -1,0 +1,53 @@
+<div class="container mt-3">
+  <form (ngSubmit)="addShop()">
+    <div class="row jumbotron box8">
+      <div class="col-sm-12 mx-t3 mb-4">
+        <h2 class="text-center text-info">Register Shop</h2>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="name-f">Shop Full Name</label>
+        <input type="text" [(ngModel)]="shopFullName" class="form-control" name="fname" id="name-f" placeholder="Enter your shop full name." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="name-l">Shop User Name</label>
+        <input type="text"[(ngModel)]="shopUserName"  class="form-control" name="lname" id="name-l" placeholder="Enter your Shop user name." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="email">Shop Email</label>
+        <input type="email" [(ngModel)]="shopEmail"  class="form-control" name="email" id="email" placeholder="Enter your email." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="shoptype-1">Shop Type </label>
+        <input type="shoptype" [(ngModel)]="shopType"  class="form-control" name="Locality" id="shoptype-1" placeholder="Resturent/Mini Shop/Street Shop" required>
+      </div>
+      <div class="col-sm-6 form-group">
+          <label for="tel">Phone</label>
+        <input type="tel" [(ngModel)]="shopPhone"  name="phone" class="form-control" id="tel" placeholder="Enter Your Contact Number." required>
+      </div>
+      <div class="col-sm-6 form-group">
+          <label for="address-2">Address</label>
+          <input type="address" [(ngModel)]="shopAddress"  class="form-control" name="address" id="address-2" placeholder="Village/City Name." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="pass">Password</label>
+        <input type="Password" [(ngModel)]="shopPassword"  name="password" class="form-control" id="pass" placeholder="Enter your password." required>
+      </div>
+      <div class="col-sm-6 form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="Password" name="cnf-password" class="form-control" id="pass2" placeholder="Re-enter your password." required>
+      </div>
+      <div class="col-sm-12">
+        <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
+        </label>
+      </div>
+      <div class="col-sm-12 form-group mb-0">
+        <button class="btn btn-primary float-right">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div>
+  <p class="text-center mt-5">Alrady have an account! Click hear to 
+    <span class="text-primary" routerLink="/provider/login">Signin</span>.
+</p>
+</div>
