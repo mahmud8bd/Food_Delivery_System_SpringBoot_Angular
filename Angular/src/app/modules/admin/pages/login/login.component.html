@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-5 d-flex justify-content-center mt-5"><div class="mt-5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkkngk3D9bVr2SQzEieZLJSlhlQZcfeZ_zfDs15rMInGhTsu9U&s" class="img-fluid rounded-top" alt="login-image"></div></div>
+    <div class="col-md-6">
+      <div class="wrapper">
+        <div class="logo">
+            <img src="https://www.freepnglogos.com/uploads/food-png/fast-food-transparent-png-pictures-icons-and-png-17.png" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            Admin Login
+        </div>
+        <form class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" [(ngModel)]="username" name="userName" id="userName" placeholder="Username">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" name="password" id="pwd" placeholder="Password" [(ngModel)]="password">
+            </div>
+            <button class="btn mt-3" (click)="login()">Login</button>
+        </form>
+        <div class="text-center fs-6">
+            <a href="#">Forget password?</a> or <a routerLink="/admin/reg">Sign up</a>
+        </div>
+    </div>
+    </div>
+  </div>
+

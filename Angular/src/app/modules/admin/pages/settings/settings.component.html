@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="table-responsive mt-5 shadow">
+    <table class="table table-striped
+        table-hover
+        align-middle">
+      <thead>
+        <tr class="bg-purple text-white">
+          <th>#id</th>
+          <th>Date</th>
+          <th>OrderId</th>
+          <th>From</th>
+          <th>Pay System</th>
+          <th>Total</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr class="" *ngFor="let x of tansection">
+          <td scope="row">{{x.transectionId}}</td>
+          <td scope="row">{{x.transectionDate | date: 'dd MMMM yyyy hh:mm a'}}</td>
+          <td scope="row">{{x.orderId}}</td>
+          <td scope="row">{{x.userFullName}}</td>
+          <td scope="row">{{x.payMethod}}</td>
+          <td scope="row">{{x.total | currency}}</td>
+          <td scope="row">
+            <button type="submit" class="badge btn-primary rounded-pill p-1">Details</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
+
+</div>
