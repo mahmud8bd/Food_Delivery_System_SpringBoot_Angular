@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class=" pb-4"><span class="text-danger h4">#{{orid}}</span></div>
+      <div class="table-responsive">
+        <table class="table shadow">
+          <thead>
+            <tr>
+              <th scope="col">Food Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">Shop</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th>
+              <th scope="col">Tracking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="" *ngFor="let x of myorderfood">
+              <td scope="row">{{x.foodName}}</td>
+              <td>
+                <span [ngSwitch]="x.orderStep">
+                  <span *ngSwitchCase="'1'" class="badge bg-info rounded-pill p-1">Confirmed</span>
+                  <span *ngSwitchCase="'2'" class="badge bg-success rounded-pill p-1">Packaging</span>
+                  <span *ngSwitchCase="'3'" class="badge bg-info rounded-pill p-1">Processing Order</span>
+                  <span *ngSwitchCase="'4'" class="badge bg-info rounded-pill p-1">Processing Order</span>
+                  <span *ngSwitchCase="'5'" class="badge bg-info rounded-pill p-1">Complete</span>
+                  <span *ngSwitchDefault class="badge bg-danger rounded-pill p-1">Panding</span>
+                </span>
+              </td>
+              <td>{{x.shopName}}</td>
+              <td>{{x.foodQuantity}}</td>
+              <td>{{x.foodPrice | currency}}</td>
+              <td>{{x.totalPrice | currency}}</td>
+              <td>
+                <button class="badge btn-primary btn-sm mt-2 rounded-pill" type="button"
+                  (click)="orderTacking(x.orderFoodId)">
+                  Tracking View
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="shadow rounded-pill p-5">
+        <div class="text-center pb-2"><span class="h4">Price Details</span></div>
+        <table class="table">
+          <tr class="border-bottom">
+            <td>Subtotal</td>
+            <td><span>{{totalPrice | currency}}</span></td>
+          </tr>
+          <tr class="border-bottom">
+            <td>Delivery Charge</td>
+            <td><span>{{2 | currency}}</span></td>
+          </tr>
+          <tr class="border-bottom border-info">
+            <td>Vat</td>
+            <td><span>{{totalPrice*15/100 | currency}}</span></td>
+          </tr>
+          <tr>
+            <td>Total Price</td>
+            <td><strong>{{totalPrice+2+(totalPrice*15/100) | currency}}</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

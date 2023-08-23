@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+      aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+      <a class="navbar-brand col-lg-3 me-0" href="#"></a>
+      <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+        <form class="d-flex px-5">
+          <input class="form-control me-2 p-3" type="search" placeholder="Search your location ..." aria-label="Search">
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </ul>
+      <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+        <a routerLink="cart" class="text-dark position-relative">
+          <fa-icon class="fa-xl" [icon]="faCartPlus"></fa-icon>
+          <span class="position-absolute top-0 start-100 translate-middle badge  bg-danger rounded-circle text-sm">{{cartItemCount}}</span>
+        </a>
+        <span class="fa-xl ms-3">
+          <a *ngIf="!isAuthenticated" class="link-dark"routerLink="/userlogin"><fa-icon [icon]="faCircleUser"></fa-icon></a>
+
+          <span *ngIf="isAuthenticated"  class="dropdown">
+            <a href="#" class="dropdown-toggle user text-warning" data-bs-toggle="dropdown"><img src="https://github.com/mdo.png" alt="mdo" width="25" height="25" class="rounded-circle"></a>
+            <div class="dropdown-menu dropdown-menu-end shadow">
+                <a routerLink="/userprofile" class="dropdown-item ps-3 pt-2"><fa-icon [icon]="faUserLarge"></fa-icon> Profile</a>
+                <a routerLink="/userprofile/myorder" class="dropdown-item ps-3 pt-2"><fa-icon [icon]="faCog"></fa-icon> My Order</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item ps-3 pb-2" (click)="logout()"><fa-icon [icon]="faSignOutAlt"></fa-icon> Logout</a>
+            </div>
+        </span>
+        </span>
+        <!-- <span class="fa-xl ms-3">
+          <ng-container *ngIf="!userShowHide; else userLinksTemplate">
+            <a class="link-dark" routerLink="/userlogin">
+              <fa-icon [icon]="faCircleUser"></fa-icon>
+            </a>
+          </ng-container>
+          <ng-template #userLinksTemplate>
+            <span class="dropdown">
+              <a href="#" class="dropdown-toggle user text-warning" data-bs-toggle="dropdown">
+                <img src="https://github.com/mdo.png" alt="mdo" width="25" height="25" class="rounded-circle">
+              </a>
+              <div class="dropdown-menu dropdown-menu-end shadow">
+                
+                <a routerLink="/userprofile" class="dropdown-item ps-3 pt-2"><fa-icon [icon]="faUserLarge"></fa-icon> Profile</a>
+                <a routerLink="/userprofile/myorder" class="dropdown-item ps-3 pt-2"><fa-icon [icon]="faCog"></fa-icon> My Order</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item ps-3 pb-2" (click)="logout()"><fa-icon [icon]="faSignOutAlt"></fa-icon> Logout</a>
+              </div>
+            </span>
+          </ng-template>
+        </span> -->
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg bg-warning rounded shadow" aria-label="Thirteenth navbar example">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+      aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="">
+      <img width="60px" height="60px" src="https://www.freepnglogos.com/uploads/f-logo-orange-png-19.png"
+        class="img-fluid rounded-top" alt="flogo"><span class="h5">foodsmela.com</span>
+    </div>
+    <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+      <a class="navbar-brand col-lg-3 me-0" routerLink="/"></a>
+      <ul class="navbar-nav col-lg-6 justify-content-lg-center h6">
+        <li class="nav-item">
+          <a class="nav-link active link-light" aria-current="page" routerLink="/">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle link-light" href="#" data-bs-toggle="dropdown"
+            aria-expanded="false">Catagory</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" routerLink="/term">Terms</a>
+        </li>
+      </ul>
+      <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+        <div class="row">
+          <div class="col-lg-1 pt-2 fa-xl text-white">
+            <fa-icon [icon]="faHeadset"></fa-icon>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-12 text-white"> 24/7 Suport</div>
+              <div class="col-12 text-info"> +09 7865 42214</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<ng-toast></ng-toast>
+<app-footer></app-footer>

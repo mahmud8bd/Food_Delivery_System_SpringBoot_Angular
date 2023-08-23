@@ -1,0 +1,125 @@
+<div class="container-fluid m-3">
+  <div id="ui-view" data-select2-id="ui-view">
+    <div>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-6">
+              <span class="h4  text-danger">Invoice </span>
+              <strong class="h6">#{{orderId}}</strong>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <a class="btn btn-sm btn-warning float-right mr-1 d-print-none rounded-pill" (click)="generatePDF('print')" data-abc="true">
+                <i class="fa fa-print"></i> Print</a>
+              <a class="btn btn-sm btn-info float-right mr-1 d-print-none" (click)="generatePDF('download')" data-abc="true">
+                <i class="fa fa-save"></i> Save</a>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col-sm-4">
+              <h6 class="mb-3 h4 text-muted">From:</h6>
+              <div>
+                <strong>Foodsmela.com</strong>
+              </div>
+              <div>42, Awesome Enclave</div>
+              <div>Dhaka City, Dhaka, 10394</div>
+              <div>Email: admin@foodmela.com</div>
+              <div>Phone: +02 123 456 789</div>
+            </div>
+
+            <div class="col-sm-4">
+              <h6 class="mb-3 h4 text-muted">Delivery To :</h6>
+              <div>
+                <strong>{{userName}}</strong>
+              </div>
+              <div>42, Awesome Enclave</div>
+              <div>{{userAddress}}</div>
+              <div>Email: {{userEmail}}</div>
+              <div>Phone: +88{{userphone}}</div>
+            </div>
+
+            <div class="col-sm-4">
+              <h6 class="mb-3 h4 text-muted">Order Details:</h6>
+              <div>Invoice
+                <strong>#{{orderId}}</strong>
+              </div>
+              <div>Date: {{orderDate | date: 'dd MMMM yyyy hh:mm a'}}</div>
+              <div>Pay-Method: {{paymentMethod}}</div>
+              <div>Tns-Number: {{transectionNumber}}</div>
+              <!-- <div>
+                <strong>SWIFT code: 99 8888 7777 6666 5555</strong>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="table-responsive-sm">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="center">#</th>
+                  <th>Item</th>
+                  <!-- <th>Description</th> -->
+                  <th>Provider</th>
+                  <th class="center">Quantity</th>
+                  <th class="right">Unit Cost</th>
+                  <th class="right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let food of orderFood; let x=index">
+                  <td class="center">{{x+1}}</td>
+                  <td class="left">{{food.foodName}}</td>
+                  <!-- <td class="left">{{food.foodDescription}}</td> -->
+                  <td class="center">{{food.shopName}}</td>
+                  <td class="center">{{food.foodQuantity}}</td>
+                  <td class="right">{{food.foodPrice | currency}}</td>
+                  <td class="right">{{food.foodPrice * food.foodQuantity | currency}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-sm-7 h6">Terms & Conditions:</div>
+            <div class="col-lg-8 col-sm-7">Lorem ipsum dolor sit amet.</div>
+            <div class="col-lg-8 col-sm-7 h6 text-info">In word: {{totalPrice | numberToWords  }}</div>
+            <div class="col-lg-4 col-sm-5 ml-auto">
+              <table class="table table-clear">
+                <tbody>
+                  <tr>
+                    <td class="left border-top border-info">
+                      <strong>Subtotal</strong>
+                    </td>
+                    <td class="right border-top border-info">{{totalPrice | currency }}</td>
+                  </tr>
+                  <tr>
+                    <td class="left">
+                      <strong>Delivery Charge</strong>
+                    </td>
+                    <td class="right">{{2 | currency }}</td>
+                  </tr>
+                  <tr>
+                    <td class="left">
+                      <strong>VAT (05%)</strong>
+                    </td>
+                    <td class="right">{{totalPrice *5/100 |currency}}</td>
+                  </tr>
+                  <tr class="bg-info">
+                    <td class="left">
+                      <strong>Total</strong>
+                    </td>
+                    <td class="right">
+                      <strong>{{totalPrice | currency }}</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

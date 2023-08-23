@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table shadow table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#Order Id</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="" *ngFor="let x of myorderfood">
+                            <td scope="row">{{x.orderId}}</td>
+                            <td>{{x.orderDate|date:'dd MMMM yyyy'}}</td>
+                            <td>{{x.paymentMethod}}</td>
+                            <td>{{x.discount}}</td>
+                            <td>{{x.totalPrice | currency}}</td>
+                            <td>
+                                <button class="badge btn-primary btn-sm mt-1 rounded-pill" type="button" (click)="orderDetails(x.orderId)">
+                                    View Details
+                                  </button>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="badge mt-1 btn-info rounded-pill" (click)="downloadInvoice(x.orderId)">Invoice</button>
+                                    
+                                    <span (click)="openFormModal(x.orderId)"><i class="bi bi-x-circle-fill ms-1 h5 text-danger"></i></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--form modal-->
+<div
+  class="modal fade"
+  id="myModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-question-circle text-warning h5"></i>
+        <span> Are you sure <span class="text-danger">cancel</span> this Order?</span>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h6 class="text-danger">&nbsp; &nbsp; &nbsp; ID is {{orderIdForCancellation}}</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="badge btn-danger" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="badge btn-primary" (click)="saveSomeThing()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

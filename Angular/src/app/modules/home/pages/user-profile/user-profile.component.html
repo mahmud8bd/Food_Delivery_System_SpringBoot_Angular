@@ -1,0 +1,55 @@
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="https://github.com/mdo.png" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 100px;">
+              <h5 class="my-3">{{userArray.username}}</h5>
+              <p class="text-muted mb-1">{{userArray.userEmail}}</p>
+              <p class="text-muted mb-4">{{userArray.userAddress}}</p>
+              <!-- <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-primary">Follow</button>
+                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+              </div> -->
+            </div>
+          </div>
+          <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item">
+                  <a routerLink="myprofiledetails" class="link">My Profile</a>
+                </li>
+                <li class="list-group-item">
+                  <a routerLink="myorder" class="link">My Order</a>
+                </li>
+                <li class="list-group-item">
+                  <a routerLink="myprofiledetails" class="link">Setting</a>
+                </li>
+                <li class="list-group-item">
+                  <a routerLink="myprofiledetails" class="link">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <router-outlet></router-outlet>
+          
+        </div>
+      </div>
+    </div>
+  </section>
