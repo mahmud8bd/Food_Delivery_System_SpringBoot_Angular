@@ -1,0 +1,93 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="my-4 text-danger"><span class="h4">#{{orderId}}</span></div>
+        <div class="table-responsive">
+          <table class="table shadow">
+            <thead>
+              <tr>
+                <th scope="col">Food Name</th>
+                <th scope="col">Sataus</th>
+                <th scope="col">Pay Method</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Status Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="">
+                <td scope="row">{{foodName}}</td>
+                <td>
+                  <span [ngSwitch]="orderStep">
+                    <span *ngSwitchCase="'1'" class="bg-info rounded-pill p-1">Ready For Delivery</span>
+                    <span *ngSwitchCase="'2'" class="bg-success rounded-pill p-1">Ready For Delivery</span>
+                    <span *ngSwitchCase="'3'" class="bg-info rounded-pill p-1">I have Confirmed</span>
+                    <span *ngSwitchCase="'4'"class="bg-info rounded-pill p-1">Ready For Delivery</span>
+                    <span *ngSwitchCase="'5'" class="bg-info rounded-pill p-1">Delivired</span>
+                    <span *ngSwitchDefault class="bg-info rounded-pill p-1">Panding</span>
+                  </span>
+                </td>
+                <td>{{paymentMethod}}</td>
+                <td>{{foodQuantity}}</td>
+                <td>{{totalPrice | currency}}</td>
+                <td>
+                  <select (change)="updateStep()" class="" [(ngModel)]="orderStep">
+                    <option value="3" [disabled]="isOptionDisabled(3)">Confirm</option>
+                    <option value="5" [disabled]="isOptionDisabled(5)">Delivered</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="shadow rounded-pill p-5">
+          <div class="pb-2"><span class="h4">Shop Address</span></div>
+          <div><span>{{shopName}}</span></div>
+          <div><span>{{"+8801920000"}}</span></div>
+          <div><span>{{"burgerking@gmail.com"}}</span></div>
+          <div><span>{{userAddress}}</span></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="shadow rounded-pill p-5">
+          <div class="pb-2"><span class="h4">Delivery Address</span></div>
+          <div><span>{{userFullName}}</span></div>
+          <div><span>{{userphone}}</span></div>
+          <div><span>{{userEmail}}</span></div>
+          <div><span>{{userAddress}}</span></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="shadow rounded-pill p-5">
+          <div class="text-center pb-2"><span class="h4">Price Details</span></div>
+          <table class="table">
+            <tr class="border-bottom">
+              <td>Subtotal</td>
+              <td><span>{{totalPrice | currency}}</span></td>
+            </tr>
+            <tr class="border-bottom">
+              <td>Delivery Charge</td>
+              <td><span>{{2 | currency}}</span></td>
+            </tr>
+            <tr class="border-bottom border-info">
+              <td>Vat</td>
+              <td><span>{{totalPrice*5/100 | currency}}</span></td>
+            </tr>
+            <tr>
+              <td>Total Price</td>
+              <td><strong>{{totalPrice+2+totalPrice*5/100 | currency}}</strong></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
