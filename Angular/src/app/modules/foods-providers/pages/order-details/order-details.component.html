@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="my-4 text-danger"><span class="h4">#{{orderId}}</span></div>
+      <div class="table-responsive">
+        <table class="table shadow">
+          <thead>
+            <tr>
+              <th scope="col">Food Name</th>
+              <th scope="col">Customar Name</th>
+              <th scope="col">Sataus</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total Price</th>
+              <th scope="col">Status Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="">
+              <td scope="row">{{foodName}}</td>
+              <td>{{userFullName}}</td>
+              <td>
+                <span [ngSwitch]="orderStep">
+                  <span *ngSwitchCase="'1'" class="badge bg-primary text-white rounded-pill p-1">Confirmed</span>
+                  <span *ngSwitchCase="'2'" class="badge bg-info text-white rounded-pill p-1">Packaging</span>
+                  <span *ngSwitchCase="'3'" class="badge bg-dark text-white rounded-pill p-1">Rider Accepted</span>
+                  <span *ngSwitchCase="'4'"class="badge bg-info text-white rounded-pill p-1">Complete</span>
+                  <span *ngSwitchCase="'5'" class="badge bg-success text-white rounded-pill p-1">Delivired</span>
+                  <span *ngSwitchDefault class="badge bg-warning text-white  rounded-pill p-1">Panding</span>
+                </span>
+              </td>
+              <td>{{foodQuantity}}</td>
+              <td>{{totalPrice | currency}}</td>
+              <td>
+                <select (change)="updateStep()" class="" [(ngModel)]="orderStep">
+                  <option value="0" [disabled]="isOptionDisabled(0)">Panding</option>
+                  <option value="1" [disabled]="isOptionDisabled(1)">Confirm</option>
+                  <option value="2" [disabled]="isOptionDisabled(2)">Packaging</option>
+                  <option value="4" [disabled]="isOptionDisabled(4)">Complete</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="shadow rounded-pill p-5">
+        <div class="pb-2"><span class="h4">Delivery Address</span></div>
+        <div><span>{{userFullName}}</span></div>
+        <div><span>{{userphone}}</span></div>
+        <div><span>{{userEmail}}</span></div>
+        <div><span>{{userAddress}}</span></div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <div class="shadow rounded-pill p-5">
+        <div class="text-center pb-2"><span class="h4">Price Details</span></div>
+        <table class="table">
+          <tr class="border-bottom">
+            <td>Subtotal</td>
+            <td><span>{{totalPrice | currency}}</span></td>
+          </tr>
+          <tr class="border-bottom">
+            <td>Delivery Charge</td>
+            <td><span>{{2 | currency}}</span></td>
+          </tr>
+          <tr class="border-bottom border-info">
+            <td>Vat</td>
+            <td><span>{{totalPrice*5/100 | currency}}</span></td>
+          </tr>
+          <tr>
+            <td>Total Price</td>
+            <td><strong>{{totalPrice+2+totalPrice*5/100 | currency}}</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

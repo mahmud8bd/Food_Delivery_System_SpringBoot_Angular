@@ -1,0 +1,39 @@
+<table class="table table-striped table-hover shadow m-3">
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">#Id</th>
+        <th scope="col">Food Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Customar</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of myOrderfood">
+        <th scope="row">{{food.orderId}}</th>
+        <td>{{food.foodName}}</td>
+        <td>
+          <span [ngSwitch]="food.orderStep">
+            <span *ngSwitchCase="'1'" class="badge bg-primary text-white rounded-pill p-1">Confirmed</span>
+            <span *ngSwitchCase="'2'" class="badge bg-info text-white  rounded-pill p-1">Packaging</span>
+            <span *ngSwitchCase="'3'" class="badge bg-dark text-white  rounded-pill p-1">Rider Accepted</span>
+            <span *ngSwitchCase="'4'"class="badge bg-info text-white  rounded-pill p-1">Complete</span>
+            <span *ngSwitchCase="'5'" class="badge bg-success text-white  rounded-pill p-1">Delivired</span>
+            <span *ngSwitchDefault class="badge bg-warning text-white  rounded-pill p-1">Panding</span>
+          </span>
+        </td>
+        <td>{{food.foodQuantity}}</td>
+        <td>{{food.foodPrice | currency}}</td>
+        <td>{{food.userId}}</td>
+        <td>
+          <button class="badge btn-primary btn-sm mt-2 rounded-pill" type="button" (click)="orderDetails(food.orderFoodId,food.orderId,food.userId)">
+            View Details
+          </button>
+        </td>
+      </tr>
+  
+    </tbody>
+  </table>
+  

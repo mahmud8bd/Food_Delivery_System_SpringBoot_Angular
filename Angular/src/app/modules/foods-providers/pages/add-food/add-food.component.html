@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="p-5">
+    <h1 class="h1 border-bottom border-primary">Add new food</h1>
+    <form (ngSubmit)="addFood()">
+      <div class="row mt-2">
+        <div class="col-md-7 shadow p-3 ">
+          <div class="m-2">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Name</label>
+              <input type="text"  class="form-control" id="exampleFormControlInput1" [(ngModel)]="foodName" name="title"
+                  placeholder="Enter food title" #title1="ngModel" required minlength="4">
+                <ul *ngIf="title1.dirty && title1.invalid" class="text-danger list-unstyled">
+                  <li *ngIf="title1.errors?.['required']">Empty Not Allowed</li>
+                  <li *ngIf="title1.errors?.['minlength']">Minimum length 4 charecter.</li>
+                </ul>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <textarea class="form-control" [(ngModel)]="foodDescription" id="exampleFormControlTextarea1" name="des" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="formFileLg" class="form-label">Food Photo Upload</label>
+              <input class="form-control form-control-lg" name="photo" id="formFileLg" type="file" (change)="selectFile($event)">
+              <div class="text-align-center">
+                <img [src]="preview" class="rounded-top m-1" height="100px"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row g-3 shadow ms-2 p-3 mt-1">
+            <!-- <div class="col-md-12">
+              <label for="inputCity" class="form-label">ID</label>
+              <input type="number" class="form-control" name="id" id="inputCity" placeholder="1001">
+            </div> -->
+            <div class="col-md-6">
+              <label for="inputEmail4" class="form-label">Price</label>
+              <input type="text" [(ngModel)]="foodPrice" class="form-control" name="price" id="inputEmail4" placeholder="15.00">
+            </div>
+            <div class="col-md-6">
+              <label for="discount" class="form-label">Discount %</label>
+              <input type="text" [(ngModel)]="foodDiscount" class="form-control" name="FoodDiscount" id="discount" placeholder="5">
+            </div>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Type</label>
+              <input type="text" [(ngModel)]="foodType" class="form-control" name="type" id="inputAddress" placeholder="Vebarage/ Fastfood">
+            </div>
+            <!-- <div class="col-12">
+              <label for="inputAddress2" class="form-label">Shop Name</label>
+              <input type="text" [(ngModel)]="shopName" class="form-control" name="vendor" id="inputAddress2" placeholder="Burger King">
+            </div>
+            <div class="col-md-12">
+              <label for="inputCity" class="form-label">Address</label>
+              <input type="text" [(ngModel)]="shopAddress" class="form-control" name="location" id="inputCity" placeholder="125/A Mirpur">
+            </div> -->
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles">Add Food</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
